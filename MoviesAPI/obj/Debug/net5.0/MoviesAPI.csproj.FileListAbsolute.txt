@@ -27,3 +27,10 @@ B:\Full-stack Course\Project\MoviesAPI\MoviesAPI\obj\Debug\net5.0\MoviesAPI.dll
 B:\Full-stack Course\Project\MoviesAPI\MoviesAPI\obj\Debug\net5.0\ref\MoviesAPI.dll
 B:\Full-stack Course\Project\MoviesAPI\MoviesAPI\obj\Debug\net5.0\MoviesAPI.pdb
 B:\Full-stack Course\Project\MoviesAPI\MoviesAPI\obj\Debug\net5.0\MoviesAPI.genruntimeconfig.cache
+B:\Full-stack Course\Project\MoviesAPI\MoviesAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+B:\Full-stack Course\Project\MoviesAPI\MoviesAPI\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+B:\Full-stack Course\Project\MoviesAPI\MoviesAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+B:\Full-stack Course\Project\MoviesAPI\MoviesAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+B:\Full-stack Course\Project\MoviesAPI\MoviesAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+B:\Full-stack Course\Project\MoviesAPI\MoviesAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+B:\Full-stack Course\Project\MoviesAPI\MoviesAPI\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
