@@ -7,27 +7,27 @@ using System.Threading.Tasks;
 
 namespace MoviesAPI.Entites
 {
-    public class Genre:IValidatableObject
+    public class Genre
     {
         public int Id { get; set; }
 
         [Required(ErrorMessage ="The field name {0} is required")]
-        [StringLength(10)]
+        [StringLength(50)]
         [FirstLetterUppercase]
         public string Name { get; set; }
 
 
         //For model validation custmize
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-           if (!string.IsNullOrEmpty(Name))
-            {
-                var firstLetter = Name[0].ToString();
-                if (firstLetter != firstLetter.ToUpper())
-                {
-                    yield return new ValidationResult("First letter should be uppercase");
-                }
-            }
-        }
+        //public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        //{
+        //   if (!string.IsNullOrEmpty(Name))
+        //    {
+        //        var firstLetter = Name[0].ToString();
+        //        if (firstLetter != firstLetter.ToUpper())
+        //        {
+        //            yield return new ValidationResult("First letter should be uppercase");
+        //        }
+        //    }
+        //}
     }
 }

@@ -3,13 +3,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using MoviesAPI.Filters;
-using MoviesAPI.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +29,18 @@ namespace MoviesAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ApplicationDbContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddCors(Option =>
+            {
+                Option.AddDefaultPolicy(Builder =>
+                {
+                    var frontendUrl = Configuration.GetValue<string>("frontend_url");
+                    Builder.WithOrigins(frontendUrl).AllowAnyMethod().AllowAnyHeader();
+                });
+            });
+            services.AddAutoMapper(typeof(Startup));
             services.AddControllers();
             services.AddResponseCaching();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();
@@ -37,7 +48,7 @@ namespace MoviesAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MoviesAPI", Version = "v1" });
             });
-            services.AddSingleton<IRepository,InmemoryRepository>();
+            //services.AddSingleton<IRepository,InmemoryRepository>();
             services.AddTransient<MyactionFilter>();
         }
 
@@ -54,6 +65,7 @@ namespace MoviesAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors();
             app.UseResponseCaching();
 
             app.UseAuthentication();
